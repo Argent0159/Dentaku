@@ -1,0 +1,69 @@
+﻿<Window x:Class="Dentaku.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentaku"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="480"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="9*"/>
+
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        
+        <TextBlock Name="CalculationDisplay" Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding Path=PushedKey}"/>
+        <TextBlock Name="ValueDisplay" Grid.Row="2" Grid.ColumnSpan="5" Text="{Binding Path=CurrentNumber}"/>
+
+        <Border Margin="5" Grid.Row="3"/>
+
+        <Button Name="PercentButton" Content="%" Grid.Row="3" Grid.Column="0"/>
+        <Button Name="RootButton" Content="√" Grid.Row="3" Grid.Column="1"/>
+        <Button Name="SquareButton" Content="x²" Grid.Row="3" Grid.Column="2"/>
+        <Button Name="ReverseNumberButton" Content="1/X" Grid.Row="3" Grid.Column="3"/>
+
+        <Button Name="ClearEndButton" Content="CE" Grid.Row="4" Grid.Column="0" Click="ClearEndClicked"/>
+        <Button Name="ClearButton" Content="C" Grid.Row="4" Grid.Column="1" Click="ClearClicked"/>
+        <Button Name="BackSpaceButton" Content="←" Grid.Row="4" Grid.Column="2" Click="BackSpaceClickd"/>
+        <Button Name="DivisionButton" Content="÷" Grid.Row="4" Grid.Column="3" Click="OperatorButtonClicked"/>
+
+        <Button Name="NumberButton7" Content="7" Grid.Row="5" Grid.Column="0" Click="NumberButtonClicked"/>
+        <Button Name="NumberButton8" Content="8" Grid.Row="5" Grid.Column="1" Click="NumberButtonClicked"/>
+        <Button Name="NumberButton9" Content="9" Grid.Row="5" Grid.Column="2" Click="NumberButtonClicked"/>
+        <Button Name="MultiplicationButton" Content="×" Grid.Row="5" Grid.Column="3" Click="OperatorButtonClicked"/>
+
+        <Button Name="NumberButton4" Content="4" Grid.Row="6" Grid.Column="0" Click="NumberButtonClicked"/>
+        <Button Name="NumberButton5" Content="5" Grid.Row="6" Grid.Column="1" Click="NumberButtonClicked"/>
+        <Button Name="NumberButton6" Content="6" Grid.Row="6" Grid.Column="2" Click="NumberButtonClicked"/>
+        <Button Name="AdditionalButton" Content="＋" Grid.Row="6" Grid.Column="3" Click="OperatorButtonClicked"/>
+
+        <Button Name="NumberButton1" Content="1" Grid.Row="7" Grid.Column="0" Click="NumberButtonClicked"/>
+        <Button Name="NumberButton2" Content="2" Grid.Row="7" Grid.Column="1" Click="NumberButtonClicked"/>
+        <Button Name="NumberButton3" Content="3" Grid.Row="7" Grid.Column="2" Click="NumberButtonClicked"/>
+        <Button Name="SubtractionButton" Content="－" Grid.Row="7" Grid.Column="3" Click="OperatorButtonClicked"/>
+
+        <Button Name="PlusOrMinusButton" Content="±" Grid.Row="8" Grid.Column="0" Click="PlusOrMinusButtonClicked"/>
+        <Button Name="NumberButton0" Content="0" Grid.Row="8" Grid.Column="1" Click="NumberButtonClicked"/>
+        <Button Name="DecimalPointButton" Content="." Grid.Row="8" Grid.Column="2"/>
+        <Button Name="EqualButton" Content="＝" Grid.Row="8" Grid.Column="3" Click="EqualButtonClicked"/>
+    </Grid>
+</Window>
