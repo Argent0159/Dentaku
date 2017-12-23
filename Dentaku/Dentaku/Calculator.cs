@@ -58,7 +58,8 @@ namespace Dentaku
             get
             {
                 var parsedNumber = double.Parse(_currentNumber);
-                return parsedNumber.ToString("#,0");
+                //return parsedNumber.ToString("#,0.#");
+                return parsedNumber.ToString();
             }
             private set
             {
@@ -70,7 +71,7 @@ namespace Dentaku
         //値の入力
         public void InputNumber(string Number)
         {
-            CurrentNumber = CurrentNumber == "0" ? Number : CurrentNumber + Number;
+            CurrentNumber = _currentNumber == "0" ? Number : _currentNumber + Number;
 
             IsPushedNumber = true;
         }
@@ -119,6 +120,12 @@ namespace Dentaku
             _queueNumber = double.Parse(CurrentNumber);
             PooledNumber = func(PooledNumber, _queueNumber);
             CurrentNumber = PooledNumber.ToString();
+        }
+
+        //小数点ボタン押下時
+        public void AddDecimalPoint()
+        {
+            CurrentNumber = _currentNumber.Contains('.') ? _currentNumber : _currentNumber + '.';
         }
 
         //パーセンテージ押下時

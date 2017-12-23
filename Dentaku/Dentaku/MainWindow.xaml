@@ -32,38 +32,144 @@
 
         
         <TextBlock Name="CalculationDisplay" Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding Path=PushedKey}"/>
-        <TextBlock Name="ValueDisplay" Grid.Row="2" Grid.ColumnSpan="5" Text="{Binding Path=CurrentNumber}"/>
+
+        <Viewbox Stretch="Uniform" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Right">
+            <TextBlock Name="ValueDisplay" Text="{Binding Path=CurrentNumber}"/>
+        </Viewbox>
 
         <Border Margin="5" Grid.Row="3"/>
 
-        <Button Name="PercentButton" Content="%" Grid.Row="3" Grid.Column="0"/>
-        <Button Name="RootButton" Content="√" Grid.Row="3" Grid.Column="1"/>
-        <Button Name="SquareButton" Content="x²" Grid.Row="3" Grid.Column="2"/>
-        <Button Name="ReverseNumberButton" Content="1/X" Grid.Row="3" Grid.Column="3"/>
+        <StackPanel Grid.Row="3" Grid.RowSpan="6" Grid.ColumnSpan="4">
+            
+        </StackPanel>
 
-        <Button Name="ClearEndButton" Content="CE" Grid.Row="4" Grid.Column="0" Click="ClearEndClicked"/>
-        <Button Name="ClearButton" Content="C" Grid.Row="4" Grid.Column="1" Click="ClearClicked"/>
-        <Button Name="BackSpaceButton" Content="←" Grid.Row="4" Grid.Column="2" Click="BackSpaceClickd"/>
-        <Button Name="DivisionButton" Content="÷" Grid.Row="4" Grid.Column="3" Click="OperatorButtonClicked"/>
+        <Button Name="PercentButton"  Grid.Row="3" Grid.Column="0">
+            <Viewbox Stretch="Uniform">
+                <Label Content="%"/>
+            </Viewbox>
+        </Button>
 
-        <Button Name="NumberButton7" Content="7" Grid.Row="5" Grid.Column="0" Click="NumberButtonClicked"/>
-        <Button Name="NumberButton8" Content="8" Grid.Row="5" Grid.Column="1" Click="NumberButtonClicked"/>
-        <Button Name="NumberButton9" Content="9" Grid.Row="5" Grid.Column="2" Click="NumberButtonClicked"/>
-        <Button Name="MultiplicationButton" Content="×" Grid.Row="5" Grid.Column="3" Click="OperatorButtonClicked"/>
+        <Button Name="RootButton"  Grid.Row="3" Grid.Column="1">
+            <Viewbox Stretch="Uniform">
+                <Label Content="√"/>
+            </Viewbox>
+        </Button>
+        
+        <Button Name="SquareButton"  Grid.Row="3" Grid.Column="2">
+            <Viewbox Stretch="Uniform">
+                <Label Content="x²"/>
+            </Viewbox>
+        </Button>
+        
+        <Button Name="ReverseNumberButton"  Grid.Row="3" Grid.Column="3">
+            <Viewbox Stretch="Uniform">
+                <Label Content="1/X"/>
+            </Viewbox>
+        </Button>
 
-        <Button Name="NumberButton4" Content="4" Grid.Row="6" Grid.Column="0" Click="NumberButtonClicked"/>
-        <Button Name="NumberButton5" Content="5" Grid.Row="6" Grid.Column="1" Click="NumberButtonClicked"/>
-        <Button Name="NumberButton6" Content="6" Grid.Row="6" Grid.Column="2" Click="NumberButtonClicked"/>
-        <Button Name="AdditionalButton" Content="＋" Grid.Row="6" Grid.Column="3" Click="OperatorButtonClicked"/>
+        <Button Name="ClearEndButton"  Grid.Row="4" Grid.Column="0" Click="ClearEndClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="CE"/>
+            </Viewbox>
+        </Button>
+        <Button Name="ClearButton"  Grid.Row="4" Grid.Column="1" Click="ClearClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="C"/>
+            </Viewbox>
+        </Button>
+        <Button Name="BackSpaceButton"  Grid.Row="4" Grid.Column="2" Click="BackSpaceClickd">
+            <Viewbox Stretch="Uniform">
+                <Label Content="←"/>
+            </Viewbox>
+        </Button>
+        <Button Name="DivisionButton"  Grid.Row="4" Grid.Column="3" Click="OperatorButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="÷"/>
+            </Viewbox>
+        </Button>
 
-        <Button Name="NumberButton1" Content="1" Grid.Row="7" Grid.Column="0" Click="NumberButtonClicked"/>
-        <Button Name="NumberButton2" Content="2" Grid.Row="7" Grid.Column="1" Click="NumberButtonClicked"/>
-        <Button Name="NumberButton3" Content="3" Grid.Row="7" Grid.Column="2" Click="NumberButtonClicked"/>
-        <Button Name="SubtractionButton" Content="－" Grid.Row="7" Grid.Column="3" Click="OperatorButtonClicked"/>
+        <Button Name="NumberButton7"  Grid.Row="5" Grid.Column="0" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="7"/>
+            </Viewbox>
+        </Button>
+        <Button Name="NumberButton8"  Grid.Row="5" Grid.Column="1" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="8"/>
+            </Viewbox>
+        </Button>
+        <Button Name="NumberButton9"  Grid.Row="5" Grid.Column="2" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="9"/>
+            </Viewbox>
+        </Button>
+        <Button Name="MultiplicationButton"  Grid.Row="5" Grid.Column="3" Click="OperatorButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="×"/>
+            </Viewbox>
+        </Button>
 
-        <Button Name="PlusOrMinusButton" Content="±" Grid.Row="8" Grid.Column="0" Click="PlusOrMinusButtonClicked"/>
-        <Button Name="NumberButton0" Content="0" Grid.Row="8" Grid.Column="1" Click="NumberButtonClicked"/>
-        <Button Name="DecimalPointButton" Content="." Grid.Row="8" Grid.Column="2"/>
-        <Button Name="EqualButton" Content="＝" Grid.Row="8" Grid.Column="3" Click="EqualButtonClicked"/>
+        <Button Name="NumberButton4"  Grid.Row="6" Grid.Column="0" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="4"/>
+            </Viewbox>
+        </Button>
+        <Button Name="NumberButton5"  Grid.Row="6" Grid.Column="1" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="5"/>
+            </Viewbox>
+        </Button>
+        <Button Name="NumberButton6"  Grid.Row="6" Grid.Column="2" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="6"/>
+            </Viewbox>
+        </Button>
+        <Button Name="AdditionalButton"  Grid.Row="6" Grid.Column="3" Click="OperatorButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="＋"/>
+            </Viewbox>
+        </Button>
+
+        <Button Name="NumberButton1" Grid.Row="7" Grid.Column="0" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="1"/>
+            </Viewbox>
+        </Button>
+        <Button Name="NumberButton2"  Grid.Row="7" Grid.Column="1" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="2"/>
+            </Viewbox>
+        </Button>
+        <Button Name="NumberButton3"  Grid.Row="7" Grid.Column="2" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="3"/>
+            </Viewbox>
+        </Button>
+        <Button Name="SubtractionButton"  Grid.Row="7" Grid.Column="3" Click="OperatorButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="－"/>
+            </Viewbox>
+        </Button>
+
+        <Button Name="PlusOrMinusButton"  Grid.Row="8" Grid.Column="0" Click="PlusOrMinusButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="±"/>
+            </Viewbox>
+        </Button>
+        <Button Name="NumberButton0"  Grid.Row="8" Grid.Column="1" Click="NumberButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="0"/>
+            </Viewbox>
+        </Button>
+        <Button Name="DecimalPointButton"  Grid.Row="8" Grid.Column="2" Click="DecimalPointClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="."/>
+            </Viewbox>
+        </Button>
+        <Button Name="EqualButton"  Grid.Row="8" Grid.Column="3" Click="EqualButtonClicked">
+            <Viewbox Stretch="Uniform">
+                <Label Content="＝"/>
+            </Viewbox>
+        </Button>
     </Grid>
 </Window>

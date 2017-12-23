@@ -36,21 +36,27 @@ namespace Dentaku
 
         public void NumberButtonClicked(object sender,RoutedEventArgs e)
         {
-            var inputNumber = ((Button)sender).Content.ToString();
+            var pushedButton = (Button)sender;
+            var viewBox = (Viewbox)(pushedButton.Content);
+            var label = (Label)(viewBox.Child);
+            var inputNumber = label.Content.ToString();
+
             _calculator.InputNumber(inputNumber);
         }
 
         //通常の四則演算ボタン押下時
         public void OperatorButtonClicked(object sender,RoutedEventArgs e)
         {
-            var pushedButton = ((Button)sender).Content.ToString();
+            var pushedButton = (Button)sender;
+            var buttonInViewBox = (Viewbox)(pushedButton.Content);
+            var buttonText = ((Label)(buttonInViewBox.Child)).Content;
 
             if (_calculator.IsPushedNumber && _calculator.IsPushedOperator)
             {
                 _calculator.Run(_basicExpression);
             }
 
-            switch (pushedButton)
+            switch (buttonText)
             {
                 case "＋":
                     _basicExpression = (x, y) => x + y;
@@ -86,6 +92,8 @@ namespace Dentaku
                 _calculator.Equal(_basicExpression);
             }
         }
+
+        public void DecimalPointClicked(object sender, RoutedEventArgs e) => _calculator.AddDecimalPoint();
 
         public void BackSpaceClickd(object sender, RoutedEventArgs e) => _calculator.BackErase();
 
