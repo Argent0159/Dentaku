@@ -43,25 +43,25 @@
             
         </StackPanel>
 
-        <Button Name="PercentButton"  Grid.Row="3" Grid.Column="0">
+        <Button Name="PercentButton"  Grid.Row="3" Grid.Column="0" Click="PercentageClicked">
             <Viewbox Stretch="Uniform">
                 <Label Content="%"/>
             </Viewbox>
         </Button>
 
-        <Button Name="RootButton"  Grid.Row="3" Grid.Column="1">
+        <Button Name="RootButton"  Grid.Row="3" Grid.Column="1" Click="SquareRootClicked">
             <Viewbox Stretch="Uniform">
                 <Label Content="√"/>
             </Viewbox>
         </Button>
         
-        <Button Name="SquareButton"  Grid.Row="3" Grid.Column="2">
+        <Button Name="SquareButton"  Grid.Row="3" Grid.Column="2" Click="SquareClicked">
             <Viewbox Stretch="Uniform">
                 <Label Content="x²"/>
             </Viewbox>
         </Button>
         
-        <Button Name="ReverseNumberButton"  Grid.Row="3" Grid.Column="3">
+        <Button Name="ReverseNumberButton"  Grid.Row="3" Grid.Column="3" Click="ReverseClicked">
             <Viewbox Stretch="Uniform">
                 <Label Content="1/X"/>
             </Viewbox>

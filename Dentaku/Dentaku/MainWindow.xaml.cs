@@ -103,6 +103,12 @@ namespace Dentaku
 
         public void PlusOrMinusButtonClicked(object sender, RoutedEventArgs e) => _calculator.ChangeSign();
 
-        
+        public void PercentageClicked(object sender, RoutedEventArgs e) => _calculator.CalculatePercentage();
+
+        public void SquareRootClicked(object sender, RoutedEventArgs e) => _calculator.CalculateSquareRoot();
+
+        public void SquareClicked(object sender, RoutedEventArgs e) => _calculator.CalculateSquare();
+
+        public void ReverseClicked(object sender, RoutedEventArgs e) => _calculator.CalculateReverseNumber();
     }
 }

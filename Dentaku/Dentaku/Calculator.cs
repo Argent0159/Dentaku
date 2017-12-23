@@ -147,16 +147,26 @@ namespace Dentaku
         //パーセンテージ押下時
         public void CalculatePercentage()
         {
-
+            CurrentNumber = (PooledNumber * (decimal.Parse(_currentNumber) / 100)).ToString();
         }
 
-
-        //ルート、逆数、2乗押下時
-        public void SpecialCalculation()
+        //√ボタン押下時
+        public void CalculateSquareRoot()
         {
-
+            CurrentNumber = (Math.Sqrt(double.Parse(_currentNumber))).ToString();
+        }
+        
+        //逆数ボタン押下時
+        public void CalculateReverseNumber()
+        {
+            CurrentNumber = (1 / decimal.Parse(_currentNumber)).ToString();
         }
 
+        //2乗ボタン押下時
+        public void CalculateSquare()
+        {
+            CurrentNumber = Math.Pow(double.Parse(_currentNumber), 2).ToString();
+        }
 
         //イコールボタン押下時
         public void Equal(Func<decimal, decimal, decimal> func)
