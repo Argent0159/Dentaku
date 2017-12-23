@@ -89,16 +89,31 @@ namespace Dentaku
 
         //1文字消去
         //文字列長が1なら値は0とし、そうでないなら後ろの1文字を削除する
-        public void BackErase() => CurrentNumber = CurrentNumber.Length == 1 ? "0" : CurrentNumber.Remove(CurrentNumber.Length - 1);
+        public void BackErase()
+        {
+            if (CurrentNumber.Length==1)
+            {
+                CurrentNumber = "0";
+            }
+            else
+            {
+                CurrentNumber.Remove(CurrentNumber.Length - 1);
+            }
+        }
         
         //符号切り替え
         public void ChangeSign()
         {
-            if (CurrentNumber != "0")
+            if (CurrentNumber != "0" && CurrentNumber.First() != '-')
             {
-                //1文字目がマイナスであるなら2文字目以降を取得(マイナスをなかったことに)
-                //そうでなければ1文字目にマイナスを付加
-                CurrentNumber = CurrentNumber.First() == '-' ? CurrentNumber.Substring(1) : '-' + CurrentNumber;
+                if (CurrentNumber.First() != '-')
+                {
+                    CurrentNumber += '-';
+                }
+                else
+                {
+                    CurrentNumber = CurrentNumber.Substring(1);
+                }
             }
         }
 
