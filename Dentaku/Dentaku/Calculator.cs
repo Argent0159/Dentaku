@@ -35,9 +35,9 @@ namespace Dentaku
 
 
         //保持する値（結果）
-        private double _pooledNumber;
+        private decimal _pooledNumber;
 
-        public double PooledNumber
+        public decimal PooledNumber
         {
             get => _pooledNumber;
             private set
@@ -48,7 +48,7 @@ namespace Dentaku
         }
 
         //入力した値の保存に使用
-        private double _queueNumber = 0;
+        private decimal _queueNumber = 0;
 
         //入力中の値
         private string _currentNumber;
@@ -57,9 +57,10 @@ namespace Dentaku
         {
             get
             {
-                var parsedNumber = double.Parse(_currentNumber);
-                //return parsedNumber.ToString("#,0.#");
-                return parsedNumber.ToString();
+                var parsedNumber = decimal.Parse($"{_currentNumber,16}");
+
+
+                return parsedNumber.ToString("#,0.###############");
             }
             private set
             {
@@ -106,18 +107,18 @@ namespace Dentaku
         {
             IsPushedOperator = true;
 
-            PooledNumber = double.Parse(CurrentNumber);
-            _queueNumber = double.Parse(CurrentNumber);
+            PooledNumber = decimal.Parse(CurrentNumber);
+            _queueNumber = decimal.Parse(CurrentNumber);
             _currentNumber = "0";
         }
 
         //通常の四則演算の実行用
-        public void Run(Func<double, double, double> func)
+        public void Run(Func<decimal, decimal, decimal> func)
         {
             IsPushedNumber = false;
             IsPushedOperator = false;
 
-            _queueNumber = double.Parse(CurrentNumber);
+            _queueNumber = decimal.Parse(CurrentNumber);
             PooledNumber = func(PooledNumber, _queueNumber);
             CurrentNumber = PooledNumber.ToString();
         }
@@ -143,11 +144,11 @@ namespace Dentaku
 
 
         //イコールボタン押下時
-        public void Equal(Func<double,double,double> func)
+        public void Equal(Func<decimal, decimal, decimal> func)
         {
             IsPushedNumber = false;
 
-            _queueNumber = _currentNumber == "0" ? _queueNumber : double.Parse(_currentNumber);
+            _queueNumber = _currentNumber == "0" ? _queueNumber : decimal.Parse(_currentNumber);
 
             PooledNumber = func(PooledNumber, _queueNumber);
 

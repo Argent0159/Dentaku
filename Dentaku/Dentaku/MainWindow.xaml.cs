@@ -21,7 +21,7 @@ namespace Dentaku
     public partial class MainWindow : Window
     {
         private Calculator _calculator;
-        private Func<double, double, double> _basicExpression;
+        private Func<decimal, decimal, decimal> _basicExpression;
         // private Func<double, double> _singleExpression;
 
         public MainWindow()
