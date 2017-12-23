@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Dentaku
 {
-    class Calculator : INotifyPropertyChanged 
+    public class Calculator : INotifyPropertyChanged 
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -22,10 +22,10 @@ namespace Dentaku
         }
 
         //最大入力可能な桁数
-        static readonly int MaxInputableNumber = 16;
+        //static readonly int MaxInputableNumber = 16;
 
         //指数表記に切り替える閾値
-        static readonly long ThresholdValue = 10_000_000_000_000_000;
+        //static readonly long ThresholdValue = 10_000_000_000_000_000;
 
         //演算子ボタンが押下されているかどうか
         public bool IsPushedOperator { get; private set; } = false;
@@ -97,7 +97,7 @@ namespace Dentaku
             }
             else
             {
-                CurrentNumber.Remove(CurrentNumber.Length - 1);
+                CurrentNumber = _currentNumber.Remove(_currentNumber.Length - 1);
             }
         }
         
