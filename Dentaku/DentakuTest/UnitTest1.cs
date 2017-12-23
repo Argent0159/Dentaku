@@ -15,7 +15,11 @@ namespace DentakuTest
 
             target.InputNumber("1");
 
-            Assert.AreEqual("1", "1");
+            Assert.AreEqual(target.CurrentNumber, "1");
+
+            target.InputNumber("2");
+
+            Assert.AreEqual(target.CurrentNumber, "12");
         }
 
         //末尾番号の消去

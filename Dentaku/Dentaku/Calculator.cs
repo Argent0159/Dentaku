@@ -33,11 +33,13 @@ namespace Dentaku
         //演算子ボタン押下後、数字ボタンが押されたかどうか
         public bool IsPushedNumber { get; private set; } = false;
 
+        //四則演算用の式
+        private Func<double, double, double> _basicExpression;
 
         //保持する値（結果）
-        private decimal _pooledNumber;
+        private double _pooledNumber;
 
-        public decimal PooledNumber
+        public double PooledNumber
         {
             get => _pooledNumber;
             private set
@@ -48,7 +50,7 @@ namespace Dentaku
         }
 
         //入力した値の保存に使用
-        private decimal _queueNumber = 0;
+        private double _queueNumber = 0;
 
         //入力中の値
         private string _currentNumber;
@@ -57,7 +59,7 @@ namespace Dentaku
         {
             get
             {
-                var parsedNumber = decimal.Parse($"{_currentNumber,16}");
+                var parsedNumber = double.Parse($"{_currentNumber,16}");
 
 
                 return parsedNumber.ToString("#,0.###############");
@@ -82,6 +84,10 @@ namespace Dentaku
         {
             ClearEnd();
             PooledNumber = 0;
+            _basicExpression = null;
+
+            IsPushedNumber = false;
+            IsPushedOperator = false;
         }
 
         //入力中の値を消去
@@ -117,25 +123,41 @@ namespace Dentaku
             }
         }
 
-        //入力中の値を保存する
-        public void SaveNumber()
-        {
-            IsPushedOperator = true;
-
-            PooledNumber = decimal.Parse(CurrentNumber);
-            _queueNumber = decimal.Parse(CurrentNumber);
-            _currentNumber = "0";
-        }
-
         //通常の四則演算の実行用
-        public void Run(Func<decimal, decimal, decimal> func)
+        public void Run()
         {
             IsPushedNumber = false;
             IsPushedOperator = false;
 
-            _queueNumber = decimal.Parse(CurrentNumber);
-            PooledNumber = func(PooledNumber, _queueNumber);
+            _queueNumber = double.Parse(CurrentNumber);
+            PooledNumber = _basicExpression?.Invoke(PooledNumber, _queueNumber) ?? PooledNumber;
             CurrentNumber = PooledNumber.ToString();
+        }
+
+        //演算子の決定
+        public void Run(string Operator)
+        {
+            switch (Operator)
+            {
+                case "＋":
+                    _basicExpression = (x, y) => x + y;
+                    break;
+                case "－":
+                    _basicExpression = (x, y) => x - y;
+                    break;
+                case "÷":
+                    _basicExpression = (x, y) => x / y;
+                    break;
+                case "×":
+                    _basicExpression = (x, y) => x * y;
+                    break;
+            }
+
+            IsPushedOperator = true;
+
+            PooledNumber = double.Parse(CurrentNumber);
+            _queueNumber = double.Parse(CurrentNumber);
+            _currentNumber = "0";
         }
 
         //小数点ボタン押下時
@@ -147,7 +169,7 @@ namespace Dentaku
         //パーセンテージ押下時
         public void CalculatePercentage()
         {
-            CurrentNumber = (PooledNumber * (decimal.Parse(_currentNumber) / 100)).ToString();
+            CurrentNumber = (PooledNumber * (double.Parse(_currentNumber) / 100)).ToString();
         }
 
         //√ボタン押下時
@@ -159,7 +181,7 @@ namespace Dentaku
         //逆数ボタン押下時
         public void CalculateReverseNumber()
         {
-            CurrentNumber = (1 / decimal.Parse(_currentNumber)).ToString();
+            CurrentNumber = (1 / double.Parse(_currentNumber)).ToString();
         }
 
         //2乗ボタン押下時
@@ -169,13 +191,13 @@ namespace Dentaku
         }
 
         //イコールボタン押下時
-        public void Equal(Func<decimal, decimal, decimal> func)
+        public void Equal()
         {
             IsPushedNumber = false;
 
-            _queueNumber = _currentNumber == "0" ? _queueNumber : decimal.Parse(_currentNumber);
+            _queueNumber = _currentNumber == "0" ? _queueNumber : double.Parse(_currentNumber);
 
-            PooledNumber = func(PooledNumber, _queueNumber);
+            PooledNumber = _basicExpression?.Invoke(PooledNumber, _queueNumber) ?? PooledNumber;
 
             CurrentNumber = PooledNumber.ToString();
             _currentNumber = "0";

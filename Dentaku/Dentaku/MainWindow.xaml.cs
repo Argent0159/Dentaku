@@ -22,7 +22,6 @@ namespace Dentaku
     {
         private Calculator _calculator;
         private Func<decimal, decimal, decimal> _basicExpression;
-        // private Func<double, double> _singleExpression;
 
         public MainWindow()
         {
@@ -49,31 +48,15 @@ namespace Dentaku
         {
             var pushedButton = (Button)sender;
             var buttonInViewBox = (Viewbox)(pushedButton.Content);
-            var buttonText = ((Label)(buttonInViewBox.Child)).Content;
+            var buttonText = ((Label)(buttonInViewBox.Child)).Content.ToString();
 
             if (_calculator.IsPushedNumber && _calculator.IsPushedOperator)
             {
-                _calculator.Run(_basicExpression);
+                _calculator.Run();
             }
 
-            switch (buttonText)
-            {
-                case "＋":
-                    _basicExpression = (x, y) => x + y;
-                    break;
-                case "－":
-                    _basicExpression = (x, y) => x - y;
-                    break;
-                case "÷":
-                    _basicExpression = (x, y) => x / y;
-                    break;
-                case "×":
-                    _basicExpression = (x, y) => x * y;
-                    break;
-            }
+            _calculator.Run(buttonText);
 
-            _calculator.SaveNumber();
-            //_calculator.IsPushedOperator = true;
         }
 
         //特殊演算ボタン押下時
@@ -85,13 +68,7 @@ namespace Dentaku
         }
 
 
-        public void EqualButtonClicked(object sender, RoutedEventArgs e)
-        {
-            if (_basicExpression != null)
-            {
-                _calculator.Equal(_basicExpression);
-            }
-        }
+        public void EqualButtonClicked(object sender, RoutedEventArgs e) => _calculator.Equal();
 
         public void DecimalPointClicked(object sender, RoutedEventArgs e) => _calculator.AddDecimalPoint();
 
