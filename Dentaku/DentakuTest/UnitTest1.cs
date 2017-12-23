@@ -28,6 +28,11 @@ namespace DentakuTest
             target.BackErase();
 
             Assert.AreEqual(target.CurrentNumber, "12");
+
+            target.BackErase();
+            target.BackErase();
+
+            Assert.AreEqual(target.CurrentNumber, "0");
         }
 
         //符号の付け外し

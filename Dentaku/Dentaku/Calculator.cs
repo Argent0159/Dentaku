@@ -104,11 +104,11 @@ namespace Dentaku
         //符号切り替え
         public void ChangeSign()
         {
-            if (CurrentNumber != "0" && CurrentNumber.First() != '-')
+            if (CurrentNumber != "0")
             {
                 if (CurrentNumber.First() != '-')
                 {
-                    CurrentNumber += '-';
+                    CurrentNumber = '-' + _currentNumber;
                 }
                 else
                 {
